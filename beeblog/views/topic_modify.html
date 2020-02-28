@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <title>修改文章 -我的博客</title>
+    {{template "header"}}
+</head>
+
+
+<body>
+
+<div class="navbar navbar-default">
+    <div class="container">
+        {{template "navbar".}}
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="margin-bottom: 10px">修改文章</div>
+
+            <form method="post" action="/topic" enctype="multipart/form-data" style="margin-left: 20px">
+                <input type="hidden" name="tid" value="{{.Tid}}">
+
+                <div class="form-group" style="margin-right: 20px">
+                    <label>文章标题</label>
+                    <input  type="text" name="title" class="form-control" value="{{.Topic.Title}}">
+                </div>
+
+                <div class="form-group" style="margin-right: 20px">
+                    <label>文章分类</label>
+                    <input  type="text" name="category" class="form-control" value="{{.Topic.Category}}">
+                </div>
+
+                <div class="form-group" style="margin-right: 20px">
+                    <label>文章标签</label>
+                    <input  type="text" name="label" class="form-control" value="{{.Topic.Labels}}">
+                </div>
+
+
+                <div class="form-group" style="margin-right: 20px">
+                    <label>文章内容</label>
+                    <textarea   name="content" cols="30" row="10" class="form-control"  >
+                    {{.Topic.Content}}
+                </textarea>
+                </div>
+
+                <div class="form-group" style="margin-right: 20px">
+                    <label>文章附件（<a href="/attachment/{{.Topic.Attachment}}">{{.Topic.Attachment}}</a>）</label>
+                    <input type="file" class="form-control"  name="attachment">
+                </div>
+
+                <button type="submit" class="btn btn-primary" >修改文章</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

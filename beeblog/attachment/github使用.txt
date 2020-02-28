@@ -1,0 +1,25 @@
+第一步：进入官网注册账户密码，并且创建一个仓库（地址：https://github.com/）
+
+第二步：下载git客户端（地址：http://msysgit.github.com/）
+
+第三步：选择或者新建一个文件夹，用来作为本地仓库，在文件夹目录下，右键Git Bash进入git命令行，执行初始化操作（命令行：$git init）
+
+第四步：创建本地ssh key（命令行：$ ssh-keygen -t rsa -C  "your_email@youremail.com"）并且进入提示地址打开id_rsa.pub，复制里面的内容，回到github网站，进入Account Settings，左边选择SSH Keys，复制后添加。
+第五步：验证是否成功。（命令行：$ ssh -T git@github.com）
+
+第六步：设置username和email
+( 命令行：
+ $ git config --global user.name "your name"  
+ $ git config --global user.email "your_email@youremail.com"
+）
+
+第七步：进入本地仓库，右键Git Bash进入git命令行，添加远程地址
+（$ git remote add origin git@github.com:用户名/仓库名.git）
+
+第八步：（add-->commit-->push）要按照顺序执行
+
+add：添加文件（命令行：git add 文件名）
+commit：提交（命令行：$ git commit -m "要写的注释"）
+push：上传（命令行：$ git push origin master）
+【注意：首次执行需要执行git pull】
+
