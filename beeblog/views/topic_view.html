@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{.Topic.Title}} -我的博客</title>
+    {{template "header"}}
+</head>
+
+
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        {{template "navbar".}}
+    </div>
+    <div class="container">
+        {{$label:=.Labels}}
+        {{with.Topic}}
+            <h3 class="text-center"><strong>{{.Title}}</strong></h3>
+            <h5>
+                标签:
+                {{range $label}}
+                <a href="/?label={{.}}">{{.}}</a>
+                {{end}}
+            </h5>
+
+        <h4>{{.Content}}</h4>
+        <h5>文章附件：<a href="/attachment/{{.Attachment}}">{{.Attachment}}</a></h5>
+        {{end}}
+    </div>
+
+    <div class="container">
+        {{$tid:=.Topic.Id}}
+        {{$isLogin:=.IsLogin}}
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="margin-bottom: 5px">提交评论</div>
+            <div class="panel-body">
+                <form method="post" action="/reply/add">
+                    <input type="hidden" name="tid" value="{{.Topic.Id}}">
+                    <div class="form-group">
+                        <label>评论人:</label>
+                        <input type="text" class="form-control" name="nickname">
+                    </div>
+                    <div class="form-group">
+                        <label>评论内容:</label>
+                        <textarea name="content" cols="10" rows="5" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-primary">提交回复</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="margin-bottom: 5px">评论区</div>
+            <div class="panel-body">
+                {{range .Replies}}
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">{{if $isLogin}}<a href="/reply/delete?tid={{$tid}}&rid={{.Id}}">删除评论</a>{{end}}</span>
+                            <span class="badge">评论人： {{.Name}}</span>
+                            {{.Content}}
+                        </li>
+                    </ul>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

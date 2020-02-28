@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title>首页 -我的博客</title>
+     {{template "header"}}
+</head>
+
+
+<body>
+
+<div class="navbar navbar-default ">
+    <div class="container">
+        {{template "navbar".}}
+    </div>
+
+    <div class="container">
+        <div class="col-md-9">
+            {{range.Topics}}
+                <div class="page-header">
+                    <a href="/topic/view/{{.Id}}"><h3>{{.Title}}</h3></a>
+                    <h5 class="text-muted">发表时间:{{.Created}}, 浏览数: <span class="badge">{{.Views}}</span>,评论数:<span class="badge">{{.ReplyCount}}</span></h5>
+                </div>
+            {{end}}
+        </div>
+        <div class="col-md-3">
+            <h4>文章分类</h4>
+            <ul class="nav nav-pills nav-stacked">
+                {{range.Categories}}
+                    <li><a href="/?cate={{.Title}}">{{.Title}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
+

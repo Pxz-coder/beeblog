@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <title>首页 -我的博客</title>
+    {{template "header"}}
+</head>
+
+<body>
+
+<div class="navbar navbar-default ">
+    <div class="container">
+        {{template "navbar".}}
+    </div>
+
+    <div class="container">
+
+        <form style="margin-top: 20px" class="form-inline" method="GET" action="/category">
+            <div class="form-group" >
+                <label>分类名称:</label>
+                <input  id="name" class="form-control"  placeholder="Enter category" name="name">
+            </div>
+            <input type="hidden" name="op" value="add">
+            <button type="submit" class="btn btn-primary" onclick="return checkInput()">添加</button>
+        </form>
+        <div class="panel panel-default" style="margin-top: 25px">
+            <div class="panel-heading">分类列表</div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>名称</th>
+                    <th>文章数</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range.Categories}}
+                    <tr>
+                        <th>{{.Id}}</th>
+                        <th>{{.Title}}</th>
+                        <th>{{.TopicCount}}</th>
+                        <th>
+                            <a href="/category?op=del&id={{.Id}}">删除</a>
+                        </th>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            function checkInput(){
+                var name=document.getElementById("name");
+                if(name.value.length==0){
+                    alert("请输入分类名称");
+                    return false
+                }
+                return true
+            }
+        </script>
+
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
+

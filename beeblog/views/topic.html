@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <title>文章 -我的博客</title>
+    {{template "header"}}
+</head>
+
+
+<body>
+
+<div class="navbar navbar-default">
+    <div class="container">
+        {{template "navbar".}}
+    </div>
+
+    <div class="container">
+
+
+        <div class="panel panel-default" style="margin-top: 20px">
+            <div class="panel-heading">文章列表<a href="/topic/add" style="margin-left: 15px" class="btn btn-primary">添加</a></div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>文章名称</th>
+                    <th>最后更新</th>
+                    <th>浏览</th>
+                    <th>回复数</th>
+                    <th>最后回复</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range.Topics}}
+                    <tr>
+                        <th>{{.Id}}</th>
+                        <th>{{.Title}}</th>
+                        <th>{{.Updated}}</th>
+                        <th>{{.Views}}</th>
+                        <th>{{.ReplyCount}}</th>
+                        <th>{{.ReplyTime}}</th>
+                        <th>
+                            <a href="/topic/modify?tid={{.Id}}">修改</a>&nbsp;&nbsp;&nbsp;
+                            <a href="/topic/delete?tid={{.Id}}">删除</a>
+                        </th>
+
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
