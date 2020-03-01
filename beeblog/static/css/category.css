@@ -1,0 +1,36 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#son1{
+    height: 80px;
+}
+
+
+#son2_root{
+    flex-wrap: wrap;
+
+}
+
+#son2_root_1{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: left;
+
+}
+
+#sone_root_2{
+   
+
+}
+
+

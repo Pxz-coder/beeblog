@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>修改文章 -我的博客</title>
+    {{template "header"}}
+    <link rel="stylesheet" href="/static/css/topic_modify.css">
+</head>
+
+
+<body>
+
+<div class="container">
+    <div id="son1">
+        {{template "navbar".}}
+    </div>
+
+    <div class="container" id="son2_root">
+
+        <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading">修改文章 </div>
+
+                <form method="post" action="/topic" enctype="multipart/form-data" style="margin-left: 20px">
+                    <input type="hidden" name="tid" value="{{.Tid}}">
+
+                    <div class="form-group">
+                        <label>文章标题</label>
+                        <input  type="text" name="title" class="form-control" value="{{.Topic.Title}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>文章分类</label>
+                        <input  type="text" name="category" class="form-control" value="{{.Topic.Category}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>文章标签</label>
+                        <input  type="text" name="label" class="form-control" value="{{.Topic.Labels}}">
+                    </div>
+
+
+                    <div class="form-group" style="margin-right: 20px">
+                        <label>文章内容</label>
+                        <textarea   id="text" name="content" cols="30" row="10" class="form-control"  >
+                    {{.Topic.Content}}
+                </textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-right: 20px">
+                        <label>文章附件（<a href="/attachment/{{.Topic.Attachment}}">{{.Topic.Attachment}}</a>）</label>
+                        <input type="file" class="form-control"  name="attachment">
+                    </div>
+
+                    <button type="submit" class="btn btn-info" >修改文章</button>
+
+
+
+                </form>
+            </div>
+
+        </div>
+        </div>
+
+</div>
+
+
+
+</body>
+
+</html>

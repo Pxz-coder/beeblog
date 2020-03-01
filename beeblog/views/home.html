@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <title>首页 -我的博客</title>
+     {{template "header"}}
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="son1">
+            {{template "navbar".}}
+        </div>
+
+        <div id="son2_root" class="container">
+
+            <div id="son2_root_1" class="container">
+                <h4>分类导航</h4>
+                <ul class="list-group">
+                    {{range.Categories}}
+                        <a href="/?cate={{.Title}}" class="list-group-item">
+                            <span class="badge">{{.TopicCount}}</span>
+                            {{.Title}}
+                        </a>
+                    {{end}}
+                </ul>
+
+            </div>
+
+            <div id="son2_root_2" class="container">
+                {{range.Topics}}
+                    <div class="page-header">
+                        <a href="/topic/view/{{.Id}}"><h3>{{.Title}}</h3></a>
+                        <h5 class="text-muted">发表时间:{{.Created}}, 浏览数: <span class="badge">{{.Views}}</span>,评论数:<span class="badge">{{.ReplyCount}}</span></h5>
+                    </div>
+                {{end}}
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+

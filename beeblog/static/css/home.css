@@ -1,0 +1,30 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#son1{
+    height: 80px;
+}
+
+#son2_root{
+    display: flex;
+    flex-grow: 1;
+}
+
+#son2_root_1{
+    width: 320px;
+
+}
+
+#sone_root_2{
+
+    flex-grow:1
+}
